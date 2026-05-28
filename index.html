@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carles Sales — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-dark: #1a1814;
+    --ink: #1a1814;
+    --ink-soft: #4a4640;
+    --accent: #c8451f;
+    --accent-soft: #e8a589;
+    --line: #1a1814;
+    --paper: #faf7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 20% 10%, rgba(200, 69, 31, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(26, 24, 20, 0.03) 0%, transparent 50%);
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4vw;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* NAV */
+  nav {
+    padding: 2rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .logo span {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    padding: 4rem 0 6rem;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeUp 1s ease-out;
+  }
+
+  .hero-meta::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease-out 0.1s backwards;
+  }
+
+  h1 .italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease-out 0.3s backwards;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 1.1rem 1.8rem;
+    border: 1px solid var(--ink);
+    transition: all 0.3s ease;
+    animation: fadeUp 1s ease-out 0.5s backwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--ink);
+    color: var(--paper);
+    gap: 1.25rem;
+  }
+
+  .hero-cta .arrow { transition: transform 0.3s; }
+  .hero-cta:hover .arrow { transform: translateX(4px); }
+
+  /* Hero side card */
+  .hero-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 2.5rem;
+    position: relative;
+    animation: fadeIn 1.2s ease-out 0.4s backwards;
+    transform: rotate(-1deg);
+    transition: transform 0.5s ease;
+  }
+
+  .hero-card:hover { transform: rotate(0deg); }
+
+  .hero-card::before {
+    content: 'ESTAT ACTUAL';
+    position: absolute;
+    top: -10px;
+    left: 2rem;
+    background: var(--bg);
+    padding: 0 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.1rem 0;
+    border-bottom: 1px dashed rgba(26, 24, 20, 0.15);
+    font-size: 0.95rem;
+  }
+
+  .card-row:last-child { border-bottom: none; }
+
+  .card-row .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+
+  .card-row .value {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2d8659;
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 8rem 0;
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .section-title .italic { font-style: italic; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .about-text p { margin-bottom: 1.5rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text .highlight {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .about-meta {
+    border-left: 1px solid var(--line);
+    padding-left: 2rem;
+  }
+
+  .meta-item {
+    margin-bottom: 2rem;
+  }
+
+  .meta-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .meta-item .value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+  }
+
+  /* CERTIFICATIONS */
+  .certs-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .cert-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(26, 24, 20, 0.15);
+    transition: padding 0.3s ease;
+  }
+
+  .cert-item:first-child { border-top: 1px solid rgba(26, 24, 20, 0.15); }
+
+  .cert-item:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .cert-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .cert-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .cert-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .cert-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid currentColor;
+  }
+
+  .cert-badge.done {
+    color: #2d8659;
+  }
+
+  .cert-badge.progress {
+    color: var(--accent);
+  }
+
+  .cert-badge.planned {
+    color: var(--ink-soft);
+  }
+
+  /* PROJECTS */
+  .project-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .project-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  .project-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .project-title .italic { font-style: italic; }
+
+  .project-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.8rem;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    background: var(--bg);
+    border: 1px dashed var(--ink-soft);
+    color: var(--ink-soft);
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--bg-dark);
+    color: var(--paper);
+    padding: 6rem 0;
+    margin: 0 -4vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+
+  .contact-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+
+  .contact-title .italic {
+    font-style: italic;
+    color: var(--accent-soft);
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    padding-bottom: 0.5rem;
+    margin-bottom: 3rem;
+    transition: color 0.3s;
+  }
+
+  .contact-email:hover { color: var(--accent-soft); }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .contact-links a {
+    color: var(--paper);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .contact-links a:hover { opacity: 1; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4vw;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-meta { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 2rem; }
+    .cert-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .nav-links { display: none; }
+    .project-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Carles <span>Sales</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mi</a></li>
+    <li><a href="#certs">Certificacions</a></li>
+    <li><a href="#projects">Projectes</a></li>
+    <li><a href="#contact">Contacte</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-meta">Barcelona · 2026</div>
+        <h1>Dades amb <span class="italic">propòsit.</span></h1>
+        <p class="hero-bio">
+          Analista de dades en transició cap a l'enginyeria analítica. Construint un perfil complet a l'ecosistema Microsoft Fabric, on cada projecte busca respondre preguntes reals de negoci, no només dibuixar gràfics bonics.
+        </p>
+        <a href="#projects" class="hero-cta">
+          Veure projectes
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-row">
+          <span class="label">Actualment</span>
+          <span class="value"><span class="status-dot"></span>Preparant DP-600</span>
+        </div>
+        <div class="card-row">
+          <span class="label">Certificat</span>
+          <span class="value">PL-300 (2026)</span>
+        </div>
+        <div class="card-row">
+          <span class="label">Pròxim curs</span>
+          <span class="value">Namasdata · Juliol</span>
+        </div>
+        <div class="card-row">
+          <span class="label">Stack</span>
+          <span class="value">Fabric · DAX · PySpark</span>
+        </div>
+        <div class="card-row">
+          <span class="label">Disponible</span>
+          <span class="value">Per projectes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">01 — Sobre mi</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class="highlight">PL-300</span> després de quatre intents. Persistència que ara aplico al següent repte.
+        </p>
+        <p>
+          Em fascina la idea que les dades, ben treballades, no només descriuen el passat sinó que <span class="highlight">obren preguntes</span> que ningú s'havia plantejat. Per això el meu camí no s'atura als visuals: vull entendre tot el cicle de vida del dato, des de la ingesta fins a la decisió.
+        </p>
+        <p>
+          Estic construint un portafoli amb tres projectes que reflecteixen aquesta visió. Aquest és el primer.
+        </p>
+      </div>
+
+      <div class="about-meta">
+        <div class="meta-item">
+          <span class="label">Ubicació</span>
+          <span class="value">Barcelona, Catalunya</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Idiomes</span>
+          <span class="value">Català · Castellà · Anglès</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Enfocament</span>
+          <span class="value">Microsoft Fabric Stack</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Filosofia</span>
+          <span class="value">Patrons abans que gràfics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="section-header">
+      <span class="section-num">02 — Certificacions</span>
+      <h2 class="section-title">El <span class="italic">camí</span></h2>
+    </div>
+
+    <div class="certs-list">
+      <div class="cert-item">
+        <span class="cert-code">PL-300</span>
+        <span class="cert-name">Microsoft Power BI Data Analyst</span>
+        <span class="cert-date">Abril 2026</span>
+        <span class="cert-badge done">Aprovat</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-code">DP-600</span>
+        <span class="cert-name">Fabric Analytics Engineer Associate</span>
+        <span class="cert-date">En curs</span>
+        <span class="cert-badge progress">Estudiant</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-code">AI-102</span>
+        <span class="cert-name">Azure AI Engineer Associate</span>
+        <span class="cert-date">2026 / 2027</span>
+        <span class="cert-badge planned">Planejat</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-num">03 — Projectes</span>
+      <h2 class="section-title">Coses que he <span class="italic">construit</span></h2>
+    </div>
+
+    <article class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">E-Commerce <span class="italic">Analytics</span><br>amb Microsoft Fabric</h3>
+        <span class="project-status">En construcció</span>
+      </div>
+      <p class="project-desc">
+        Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg.
+      </p>
+      <div class="project-stack">
+        <span class="stack-tag">Microsoft Fabric</span>
+        <span class="stack-tag">Lakehouse</span>
+        <span class="stack-tag">PySpark</span>
+        <span class="stack-tag">Delta Lake</span>
+        <span class="stack-tag">DAX</span>
+        <span class="stack-tag">Power BI</span>
+        <span class="stack-tag">Direct Lake</span>
+      </div>
+    </article>
+
+    <article class="project-card" style="opacity: 0.5;">
+      <div class="project-header">
+        <h3 class="project-title">Projecte <span class="italic">2</span></h3>
+        <span class="project-status">Pròximament</span>
+      </div>
+      <p class="project-desc">
+        En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades.
+      </p>
+    </article>
+
+    <article class="project-card" style="opacity: 0.4;">
+      <div class="project-header">
+        <h3 class="project-title">Projecte <span class="italic">3</span></h3>
+        <span class="project-status">Planejat</span>
+      </div>
+      <p class="project-desc">
+        Integració d'IA aplicada a l'anàlisi de dades. Vinculat a la certificació AI-102.
+      </p>
+    </article>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Parlem de <span class="italic">dades.</span></h2>
+    <a href="mailto:carles@carlessales.com" class="contact-email">carles@carlessales.com</a>
+    <div class="contact-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <a href="#">Microsoft Learn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Carles Sales · Fet a Barcelona
+</footer>
+
+</body>
+</html>
