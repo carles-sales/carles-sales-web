@@ -39,7 +39,6 @@
       radial-gradient(circle at 80% 80%, rgba(26, 24, 20, 0.03) 0%, transparent 50%);
   }
 
-  /* Subtle paper texture */
   body::before {
     content: '';
     position: fixed;
@@ -81,6 +80,12 @@
     font-style: italic;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
   .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -110,6 +115,40 @@
 
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    padding: 0.4rem 0.7rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .lang-btn:hover:not(.active) {
+    color: var(--accent);
+  }
 
   /* HERO */
   .hero {
@@ -198,7 +237,6 @@
   .hero-cta .arrow { transition: transform 0.3s; }
   .hero-cta:hover .arrow { transform: translateX(4px); }
 
-  /* Hero side card */
   .hero-card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -212,7 +250,7 @@
   .hero-card:hover { transform: rotate(0deg); }
 
   .hero-card::before {
-    content: 'ESTAT ACTUAL';
+    content: attr(data-label);
     position: absolute;
     top: -10px;
     left: 2rem;
@@ -348,6 +386,8 @@
     padding: 2.5rem 0;
     border-bottom: 1px solid rgba(26, 24, 20, 0.15);
     transition: padding 0.3s ease;
+    text-decoration: none;
+    color: inherit;
   }
 
   .cert-item:first-child { border-top: 1px solid rgba(26, 24, 20, 0.15); }
@@ -386,17 +426,9 @@
     border: 1px solid currentColor;
   }
 
-  .cert-badge.done {
-    color: #2d8659;
-  }
-
-  .cert-badge.progress {
-    color: var(--accent);
-  }
-
-  .cert-badge.planned {
-    color: var(--ink-soft);
-  }
+  .cert-badge.done { color: #2d8659; }
+  .cert-badge.progress { color: var(--accent); }
+  .cert-badge.planned { color: var(--ink-soft); }
 
   /* PROJECTS */
   .project-card {
@@ -526,9 +558,18 @@
     text-decoration: none;
     opacity: 0.7;
     transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .contact-links a:hover { opacity: 1; }
+
+  .contact-links a::before {
+    content: '↗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
 
   /* FOOTER */
   footer {
@@ -564,10 +605,7 @@
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-meta { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 2rem; }
-    .cert-item {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
+    .cert-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .nav-links { display: none; }
     .project-header { flex-direction: column; }
   }
@@ -577,12 +615,18 @@
 
 <nav>
   <div class="logo">Carles <span>Sales</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">Sobre mi</a></li>
-    <li><a href="#certs">Certificacions</a></li>
-    <li><a href="#projects">Projectes</a></li>
-    <li><a href="#contact">Contacte</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-ca="Sobre mi" data-es="Sobre mí">Sobre mi</a></li>
+      <li><a href="#certs" data-ca="Certificacions" data-es="Certificaciones">Certificacions</a></li>
+      <li><a href="#projects" data-ca="Projectes" data-es="Proyectos">Projectes</a></li>
+      <li><a href="#contact" data-ca="Contacte" data-es="Contacto">Contacte</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ca')">CA</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
 </nav>
 
 <main class="container">
@@ -592,27 +636,29 @@
     <div class="hero-grid">
       <div>
         <div class="hero-meta">Vallclara · 2026</div>
-        <h1>Dades amb <span class="italic">propòsit.</span></h1>
-        <p class="hero-bio">
+        <h1 data-ca="Dades amb <span class='italic'>propòsit.</span>" data-es="Datos con <span class='italic'>propósito.</span>">Dades amb <span class="italic">propòsit.</span></h1>
+        <p class="hero-bio"
+          data-ca="Analista de dades en transició cap a l'enginyeria analítica. Construint un perfil complet a l'ecosistema Microsoft Fabric, on cada projecte busca respondre preguntes reals de negoci, no només dibuixar gràfics bonics."
+          data-es="Analista de datos en transición hacia la ingeniería analítica. Construyendo un perfil completo en el ecosistema Microsoft Fabric, donde cada proyecto busca responder preguntas reales de negocio, no solo dibujar gráficos bonitos.">
           Analista de dades en transició cap a l'enginyeria analítica. Construint un perfil complet a l'ecosistema Microsoft Fabric, on cada projecte busca respondre preguntes reals de negoci, no només dibuixar gràfics bonics.
         </p>
-        <a href="#projects" class="hero-cta">
+        <a href="#projects" class="hero-cta" data-ca="Veure projectes" data-es="Ver proyectos">
           Veure projectes
           <span class="arrow">→</span>
         </a>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card" data-label="ESTAT ACTUAL" data-label-ca="ESTAT ACTUAL" data-label-es="ESTADO ACTUAL">
         <div class="card-row">
-          <span class="label">Actualment</span>
-          <span class="value"><span class="status-dot"></span>Preparant DP-600</span>
+          <span class="label" data-ca="Actualment" data-es="Actualmente">Actualment</span>
+          <span class="value"><span class="status-dot"></span><span data-ca="Preparant DP-600" data-es="Preparando DP-600">Preparant DP-600</span></span>
         </div>
         <div class="card-row">
-          <span class="label">Certificat</span>
+          <span class="label" data-ca="Certificat" data-es="Certificado">Certificat</span>
           <span class="value">PL-300 (2026)</span>
         </div>
         <div class="card-row">
-          <span class="label">Pròxim curs</span>
+          <span class="label" data-ca="Pròxim curs" data-es="Próximo curso">Pròxim curs</span>
           <span class="value">Namasdata · Juliol</span>
         </div>
         <div class="card-row">
@@ -620,8 +666,8 @@
           <span class="value">Fabric · DAX · PySpark</span>
         </div>
         <div class="card-row">
-          <span class="label">Disponible</span>
-          <span class="value">Per projectes</span>
+          <span class="label" data-ca="Disponible" data-es="Disponible">Disponible</span>
+          <span class="value" data-ca="Per projectes" data-es="Para proyectos">Per projectes</span>
         </div>
       </div>
     </div>
@@ -630,38 +676,41 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="section-header">
-      <span class="section-num">01 — Sobre mi</span>
+      <span class="section-num" data-ca="01 — Sobre mi" data-es="01 — Sobre mí">01 — Sobre mi</span>
     </div>
 
     <div class="about-grid">
       <div class="about-text">
-        <p>
+        <p data-ca="Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class='highlight'>PL-300</span> després de quatre intents. Persistència que ara aplico al següent repte."
+           data-es="Vengo del mundo del análisis de datos con Power BI, donde me certifiqué con la <span class='highlight'>PL-300</span> tras cuatro intentos. Persistencia que ahora aplico al siguiente reto.">
           Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class="highlight">PL-300</span> després de quatre intents. Persistència que ara aplico al següent repte.
         </p>
-        <p>
+        <p data-ca="Em fascina la idea que les dades, ben treballades, no només descriuen el passat sinó que <span class='highlight'>obren preguntes</span> que ningú s'havia plantejat. Per això el meu camí no s'atura als visuals: vull entendre tot el cicle de vida de la dada, des de la ingesta fins a la decisió."
+           data-es="Me fascina la idea de que los datos, bien trabajados, no solo describen el pasado sino que <span class='highlight'>abren preguntas</span> que nadie se había planteado. Por eso mi camino no se detiene en los visuales: quiero entender todo el ciclo de vida del dato, desde la ingesta hasta la decisión.">
           Em fascina la idea que les dades, ben treballades, no només descriuen el passat sinó que <span class="highlight">obren preguntes</span> que ningú s'havia plantejat. Per això el meu camí no s'atura als visuals: vull entendre tot el cicle de vida de la dada, des de la ingesta fins a la decisió.
         </p>
-        <p>
+        <p data-ca="Estic construint un portafoli amb tres projectes que reflecteixen aquesta visió. Aquest és el primer."
+           data-es="Estoy construyendo un portfolio con tres proyectos que reflejan esta visión. Este es el primero.">
           Estic construint un portafoli amb tres projectes que reflecteixen aquesta visió. Aquest és el primer.
         </p>
       </div>
 
       <div class="about-meta">
         <div class="meta-item">
-          <span class="label">Ubicació</span>
+          <span class="label" data-ca="Ubicació" data-es="Ubicación">Ubicació</span>
           <span class="value">Vallclara, Catalunya</span>
         </div>
         <div class="meta-item">
-          <span class="label">Idiomes</span>
-          <span class="value">Català · Castellà · Anglès</span>
+          <span class="label" data-ca="Idiomes" data-es="Idiomas">Idiomes</span>
+          <span class="value" data-ca="Català · Castellà · Anglès" data-es="Catalán · Castellano · Inglés">Català · Castellà · Anglès</span>
         </div>
         <div class="meta-item">
-          <span class="label">Enfocament</span>
+          <span class="label" data-ca="Enfocament" data-es="Enfoque">Enfocament</span>
           <span class="value">Microsoft Fabric Stack</span>
         </div>
         <div class="meta-item">
-          <span class="label">Filosofia</span>
-          <span class="value">Patrons abans que gràfics</span>
+          <span class="label" data-ca="Filosofia" data-es="Filosofía">Filosofia</span>
+          <span class="value" data-ca="Patrons abans que gràfics" data-es="Patrones antes que gráficos">Patrons abans que gràfics</span>
         </div>
       </div>
     </div>
@@ -670,28 +719,28 @@
   <!-- CERTIFICATIONS -->
   <section id="certs">
     <div class="section-header">
-      <span class="section-num">02 — Certificacions</span>
-      <h2 class="section-title">El <span class="italic">camí</span></h2>
+      <span class="section-num" data-ca="02 — Certificacions" data-es="02 — Certificaciones">02 — Certificacions</span>
+      <h2 class="section-title" data-ca="El <span class='italic'>camí</span>" data-es="El <span class='italic'>camino</span>">El <span class="italic">camí</span></h2>
     </div>
 
     <div class="certs-list">
-      <div class="cert-item">
+      <a class="cert-item" href="https://learn.microsoft.com/es-es/users/sanchosalescarles-8381/credentials/183902ea1c08ca18" target="_blank" rel="noopener">
         <span class="cert-code">PL-300</span>
-        <span class="cert-name">Microsoft Power BI Data Analyst</span>
-        <span class="cert-date">Abril 2026</span>
-        <span class="cert-badge done">Aprovat</span>
-      </div>
+        <span class="cert-name" data-ca="Microsoft Power BI Data Analyst" data-es="Microsoft Power BI Data Analyst">Microsoft Power BI Data Analyst</span>
+        <span class="cert-date" data-ca="Abril 2026" data-es="Abril 2026">Abril 2026</span>
+        <span class="cert-badge done" data-ca="Aprovat" data-es="Aprobado">Aprovat</span>
+      </a>
       <div class="cert-item">
         <span class="cert-code">DP-600</span>
-        <span class="cert-name">Fabric Analytics Engineer Associate</span>
-        <span class="cert-date">En curs</span>
-        <span class="cert-badge progress">Estudiant</span>
+        <span class="cert-name" data-ca="Fabric Analytics Engineer Associate" data-es="Fabric Analytics Engineer Associate">Fabric Analytics Engineer Associate</span>
+        <span class="cert-date" data-ca="En curs" data-es="En curso">En curs</span>
+        <span class="cert-badge progress" data-ca="Estudiant" data-es="Estudiando">Estudiant</span>
       </div>
       <div class="cert-item">
         <span class="cert-code">AI-102</span>
-        <span class="cert-name">Azure AI Engineer Associate</span>
+        <span class="cert-name" data-ca="Azure AI Engineer Associate" data-es="Azure AI Engineer Associate">Azure AI Engineer Associate</span>
         <span class="cert-date">2026 / 2027</span>
-        <span class="cert-badge planned">Planejat</span>
+        <span class="cert-badge planned" data-ca="Planejat" data-es="Planificado">Planejat</span>
       </div>
     </div>
   </section>
@@ -699,16 +748,18 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-header">
-      <span class="section-num">03 — Projectes</span>
-      <h2 class="section-title">Coses que he <span class="italic">construit</span></h2>
+      <span class="section-num" data-ca="03 — Projectes" data-es="03 — Proyectos">03 — Projectes</span>
+      <h2 class="section-title" data-ca="Coses que he <span class='italic'>construit</span>" data-es="Cosas que he <span class='italic'>construido</span>">Coses que he <span class="italic">construit</span></h2>
     </div>
 
     <article class="project-card">
       <div class="project-header">
-        <h3 class="project-title">E-Commerce <span class="italic">Analytics</span><br>amb Microsoft Fabric</h3>
-        <span class="project-status">En construcció</span>
+        <h3 class="project-title" data-ca="E-Commerce <span class='italic'>Analytics</span><br>amb Microsoft Fabric" data-es="E-Commerce <span class='italic'>Analytics</span><br>con Microsoft Fabric">E-Commerce <span class="italic">Analytics</span><br>amb Microsoft Fabric</h3>
+        <span class="project-status" data-ca="En construcció" data-es="En construcción">En construcció</span>
       </div>
-      <p class="project-desc">
+      <p class="project-desc"
+        data-ca="Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg."
+        data-es="Análisis end-to-end de un dataset real de ventas de una empresa de ropa en India. Desde la ingesta de CSVs al Lakehouse, pasando por transformaciones con PySpark, modelado semántico con Direct Lake, hasta la construcción de un report en Power BI orientado a responder preguntas de negocio: qué productos funcionan, qué canales tienen más cancelaciones, cuál es la salud real del catálogo.">
         Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg.
       </p>
       <div class="project-stack">
@@ -724,20 +775,24 @@
 
     <article class="project-card" style="opacity: 0.5;">
       <div class="project-header">
-        <h3 class="project-title">Projecte <span class="italic">2</span></h3>
-        <span class="project-status">Pròximament</span>
+        <h3 class="project-title" data-ca="Projecte <span class='italic'>2</span>" data-es="Proyecto <span class='italic'>2</span>">Projecte <span class="italic">2</span></h3>
+        <span class="project-status" data-ca="Pròximament" data-es="Próximamente">Pròximament</span>
       </div>
-      <p class="project-desc">
+      <p class="project-desc"
+        data-ca="En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades."
+        data-es="En desarrollo. Posiblemente sobre el mundo del vino o la ornitología — un sector donde los datos son abundantes pero poco explotados.">
         En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades.
       </p>
     </article>
 
     <article class="project-card" style="opacity: 0.4;">
       <div class="project-header">
-        <h3 class="project-title">Projecte <span class="italic">3</span></h3>
-        <span class="project-status">Planejat</span>
+        <h3 class="project-title" data-ca="Projecte <span class='italic'>3</span>" data-es="Proyecto <span class='italic'>3</span>">Projecte <span class="italic">3</span></h3>
+        <span class="project-status" data-ca="Planejat" data-es="Planificado">Planejat</span>
       </div>
-      <p class="project-desc">
+      <p class="project-desc"
+        data-ca="Integració d'IA aplicada a l'anàlisi de dades. Vinculat a la certificació AI-102."
+        data-es="Integración de IA aplicada al análisis de datos. Vinculado a la certificación AI-102.">
         Integració d'IA aplicada a l'anàlisi de dades. Vinculat a la certificació AI-102.
       </p>
     </article>
@@ -747,19 +802,45 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
-    <h2 class="contact-title">Parlem de <span class="italic">dades.</span></h2>
+    <h2 class="contact-title" data-ca="Parlem de <span class='italic'>dades.</span>" data-es="Hablemos de <span class='italic'>datos.</span>">Parlem de <span class="italic">dades.</span></h2>
     <a href="mailto:carles@carlessales.com" class="contact-email">carles@carlessales.com</a>
     <div class="contact-links">
-      <a href="#">LinkedIn</a>
-      <a href="#">GitHub</a>
-      <a href="#">Microsoft Learn</a>
+      <a href="https://www.linkedin.com/in/carlessanchosales/" target="_blank" rel="noopener" data-ca="LinkedIn" data-es="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/carles-sales" target="_blank" rel="noopener" data-ca="GitHub" data-es="GitHub">GitHub</a>
+      <a href="https://learn.microsoft.com/es-es/users/sanchosalescarles-8381/credentials/183902ea1c08ca18" target="_blank" rel="noopener" data-ca="PL-300 · Credencial" data-es="PL-300 · Credencial">PL-300 · Credencial</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Carles Sales · Fet a Vallclara
+  <span data-ca="© 2026 Carles Sales · Fet a Vallclara" data-es="© 2026 Carles Sales · Hecho en Vallclara">© 2026 Carles Sales · Fet a Vallclara</span>
 </footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+
+    // Botons actius
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+
+    // Tots els elements amb data-ca / data-es
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (el.tagName === 'A' && el.classList.contains('hero-cta')) {
+        el.innerHTML = val + ' <span class="arrow">→</span>';
+      } else {
+        el.innerHTML = val;
+      }
+    });
+
+    // Label de la hero-card (pseudo-element via atribut)
+    document.querySelectorAll('.hero-card').forEach(card => {
+      card.setAttribute('data-label', card.getAttribute('data-label-' + lang));
+    });
+  }
+</script>
 
 </body>
 </html>
