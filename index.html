@@ -3,7 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carles Sales — Data Analyst</title>
+<title>Carles Sales — Data Analyst | Microsoft Fabric & Power BI</title>
+<meta name="description" content="Data Analyst en transición hacia Analytics Engineering. Proyectos end-to-end en Microsoft Fabric: Lakehouse, PySpark, Direct Lake, DAX y Power BI. Certificado PL-300.">
+<meta name="author" content="Carles Sales">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#f4f1ea">
+<link rel="canonical" href="https://carlessales.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carles Sales">
+<meta property="og:title" content="Carles Sales — Data Analyst | Microsoft Fabric & Power BI">
+<meta property="og:description" content="Data Analyst en transición hacia Analytics Engineering. Proyectos end-to-end en Microsoft Fabric. Certificado PL-300.">
+<meta property="og:url" content="https://carlessales.com/">
+<meta property="og:image" content="https://carlessales.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carles Sales — Data Analyst · Microsoft Fabric">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="ca_ES">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carles Sales — Data Analyst | Microsoft Fabric & Power BI">
+<meta name="twitter:description" content="Data Analyst en transición hacia Analytics Engineering. Proyectos end-to-end en Microsoft Fabric. Certificado PL-300.">
+<meta name="twitter:image" content="https://carlessales.com/og-image.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Carles Sales",
+  "url": "https://carlessales.com",
+  "jobTitle": "Data Analyst",
+  "description": "Data Analyst en transición hacia Analytics Engineering en el ecosistema Microsoft Fabric.",
+  "knowsAbout": ["Microsoft Fabric", "Power BI", "DAX", "PySpark", "Direct Lake", "Data Analytics", "Analytics Engineering"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vallclara",
+    "addressRegion": "Catalunya",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/carlessanchosales/",
+    "https://github.com/carles-sales"
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "certification",
+    "name": "Microsoft Certified: Power BI Data Analyst Associate (PL-300)"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -499,6 +552,52 @@
     color: var(--ink-soft);
   }
 
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .project-links a {
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.2rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .project-links a::after { content: '↗'; font-size: 0.7rem; opacity: 0.6; }
+  .project-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .project-note {
+    margin-top: 1.5rem;
+    max-width: 700px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .project-note::before {
+    content: 'ⓘ';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
   /* CONTACT */
   .contact {
     background: var(--bg-dark);
@@ -755,12 +854,12 @@
     <article class="project-card">
       <div class="project-header">
         <h3 class="project-title" data-ca="E-Commerce <span class='italic'>Analytics</span><br>amb Microsoft Fabric" data-es="E-Commerce <span class='italic'>Analytics</span><br>con Microsoft Fabric">E-Commerce <span class="italic">Analytics</span><br>amb Microsoft Fabric</h3>
-        <span class="project-status" data-ca="En curs" data-es="En curs">En curs</span>
+        <span class="project-status" data-ca="Completat" data-es="Completado">Completat</span>
       </div>
       <p class="project-desc"
-        data-ca="Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg."
-        data-es="Análisis end-to-end de un dataset real de ventas de una empresa de ropa en India. Desde la ingesta de CSVs al Lakehouse, pasando por transformaciones con PySpark, modelado semántico con Direct Lake, hasta la construcción de un report en Power BI orientado a responder preguntas de negocio: qué productos funcionan, qué canales tienen más cancelaciones, cuál es la salud real del catálogo.">
-        Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg.
+        data-ca="Anàlisi end-to-end de les vendes de roba d'Amazon a l'Índia (Q2 2022, 129K comandes) íntegrament a Microsoft Fabric: ingesta al Lakehouse, transformacions amb PySpark, modelat semàntic amb Direct Lake i report a Power BI Service. La troballa clau: Amazon i Merchant marquen l'èxit amb estats diferents ('Shipped' vs 'Delivered'); normalitzar-los va revelar que la fuita real d'ingrés era de l'~11% (₹8,82M), no del 36% que semblava en cru."
+        data-es="Análisis end-to-end de las ventas de ropa de Amazon en India (Q2 2022, 129K pedidos) íntegramente en Microsoft Fabric: ingesta al Lakehouse, transformaciones con PySpark, modelado semántico con Direct Lake y report en Power BI Service. El hallazgo clave: Amazon y Merchant marcan el éxito con estados distintos ('Shipped' vs 'Delivered'); normalizarlos reveló que la fuga real de ingreso era del ~11% (₹8,82M), no del 36% que parecía en crudo.">
+        Anàlisi end-to-end de les vendes de roba d'Amazon a l'Índia (Q2 2022, 129K comandes) íntegrament a Microsoft Fabric: ingesta al Lakehouse, transformacions amb PySpark, modelat semàntic amb Direct Lake i report a Power BI Service. La troballa clau: Amazon i Merchant marquen l'èxit amb estats diferents ('Shipped' vs 'Delivered'); normalitzar-los va revelar que la fuita real d'ingrés era de l'~11% (₹8,82M), no del 36% que semblava en cru.
       </p>
       <div class="project-stack">
         <span class="stack-tag">Microsoft Fabric</span>
@@ -772,21 +871,37 @@
         <span class="stack-tag">Direct Lake</span>
 </div>
       <div class="project-links">
-        <a href="https://github.com/carles-sales/fabric-amazon-sales" target="_blank" rel="noopener" 
+        <a href="https://github.com/carles-sales/fabric-amazon-sales" target="_blank" rel="noopener"
            data-ca="Veure a GitHub" data-es="Ver en GitHub">Veure a GitHub</a>
+        <a href="https://github.com/carles-sales/fabric-amazon-sales/blob/main/docs/00_Amazon_Sales_India.pdf" target="_blank" rel="noopener"
+           data-ca="Veure el PDF" data-es="Ver el PDF">Veure el PDF</a>
       </div>
+      <p class="project-note"
+         data-ca="Si el report interactiu no carrega, és perquè la Fabric capacity està pausada per optimització de costos."
+         data-es="Si el report interactivo no carga, es porque la Fabric capacity está pausada por optimización de costes.">
+        Si el report interactiu no carrega, és perquè la Fabric capacity està pausada per optimització de costos.
+      </p>
     </article>
 
-    <article class="project-card" style="opacity: 0.5;">
+    <article class="project-card" style="opacity: 0.7;">
       <div class="project-header">
-        <h3 class="project-title" data-ca="Projecte <span class='italic'>2</span>" data-es="Proyecto <span class='italic'>2</span>">Projecte <span class="italic">2</span></h3>
+        <h3 class="project-title" data-ca="Logística &amp; <span class='italic'>Supply Chain</span><br>amb Microsoft Fabric" data-es="Logística &amp; <span class='italic'>Supply Chain</span><br>con Microsoft Fabric">Logística &amp; <span class="italic">Supply Chain</span><br>amb Microsoft Fabric</h3>
         <span class="project-status" data-ca="Pròximament" data-es="Próximamente">Pròximament</span>
       </div>
       <p class="project-desc"
-        data-ca="En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades."
-        data-es="En desarrollo. Posiblemente sobre el mundo del vino o la ornitología — un sector donde los datos son abundantes pero poco explotados.">
-        En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades.
+        data-ca="Anàlisi de la cadena logística de l'e-commerce brasiler amb el dataset públic d'Olist (~100K comandes, 2016–2018). Mateix stack Fabric end-to-end, ara enfocat a temps de lliurament, desviació sobre la data estimada, cost de transport i rendiment per venedor i regió — què fa que una comanda arribi tard i com es relaciona amb la satisfacció del client."
+        data-es="Análisis de la cadena logística del e-commerce brasileño con el dataset público de Olist (~100K pedidos, 2016–2018). Mismo stack Fabric end-to-end, ahora enfocado a tiempos de entrega, desviación sobre la fecha estimada, coste de transporte y rendimiento por vendedor y región — qué hace que un pedido llegue tarde y cómo se relaciona con la satisfacción del cliente.">
+        Anàlisi de la cadena logística de l'e-commerce brasiler amb el dataset públic d'Olist (~100K comandes, 2016–2018). Mateix stack Fabric end-to-end, ara enfocat a temps de lliurament, desviació sobre la data estimada, cost de transport i rendiment per venedor i regió — què fa que una comanda arribi tard i com es relaciona amb la satisfacció del client.
       </p>
+      <div class="project-stack">
+        <span class="stack-tag">Microsoft Fabric</span>
+        <span class="stack-tag">Lakehouse</span>
+        <span class="stack-tag">PySpark</span>
+        <span class="stack-tag">Delta Lake</span>
+        <span class="stack-tag">DAX</span>
+        <span class="stack-tag">Power BI</span>
+        <span class="stack-tag">Direct Lake</span>
+      </div>
     </article>
 
     <article class="project-card" style="opacity: 0.4;">
