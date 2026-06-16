@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<html lang="ca">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +58,6 @@
 }
 </script>
 
-<title>Carles Sales — Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -727,8 +725,6 @@
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('ca')">CA</button>
-      <button class="lang-btn active" onclick="setLang('ca')">CA</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
     </div>
   </div>
 </nav>
@@ -763,18 +759,18 @@
         </div>
         <div class="card-row">
           <span class="label" data-ca="Pròxim curs" data-es="Próximo curso">Pròxim curs</span>
-          <span class="value" data-ca="Formació DP-600 · Juliol" data-es="Formación DP-600 · Julio">Formació DP-600 · Juliol</span>
           <span class="value">Namasdata · Juliol</span>
+          <span class="value" data-ca="Formació DP-600 · Juliol" data-es="Formación DP-600 · Julio">Formació DP-600 · Juliol</span>
         </div>
         <div class="card-row">
           <span class="label">Stack</span>
           <span class="value">Fabric · DAX · PySpark</span>
         </div>
         <div class="card-row">
-          <span class="label" data-ca="Obert a" data-es="Abierto a">Obert a</span>
-          <span class="value" data-ca="Rols d'Analytics Engineering" data-es="Roles de Analytics Engineering">Rols d'Analytics Engineering</span>
           <span class="label" data-ca="Disponible" data-es="Disponible">Disponible</span>
           <span class="value" data-ca="Per projectes" data-es="Para proyectos">Per projectes</span>
+          <span class="label" data-ca="Obert a" data-es="Abierto a">Obert a</span>
+          <span class="value" data-ca="Rols d'Analytics Engineering" data-es="Roles de Analytics Engineering">Rols d'Analytics Engineering</span>
         </div>
       </div>
     </div>
@@ -788,12 +784,12 @@
 
     <div class="about-grid">
       <div class="about-text">
-        <p data-ca="Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class='highlight'>PL-300</span> l'abril de 2026. Una base sòlida per al següent repte."
-           data-es="Vengo del mundo del análisis de datos con Power BI, donde me certifiqué con la <span class='highlight'>PL-300</span> en abril de 2026. Una base sólida para el siguiente reto.">
-          Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class="highlight">PL-300</span> l'abril de 2026. Una base sòlida per al següent repte.
         <p data-ca="Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class='highlight'>PL-300</span> després de quatre intents. Persistència que ara aplico al següent repte."
            data-es="Vengo del mundo del análisis de datos con Power BI, donde me certifiqué con la <span class='highlight'>PL-300</span> tras cuatro intentos. Persistencia que ahora aplico al siguiente reto.">
           Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class="highlight">PL-300</span> després de quatre intents. Persistència que ara aplico al següent repte.
+        <p data-ca="Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class='highlight'>PL-300</span> l'abril de 2026. Una base sòlida per al següent repte."
+           data-es="Vengo del mundo del análisis de datos con Power BI, donde me certifiqué con la <span class='highlight'>PL-300</span> en abril de 2026. Una base sólida para el siguiente reto.">
+          Vinc del món de l'anàlisi de dades amb Power BI, on em vaig certificar amb la <span class="highlight">PL-300</span> l'abril de 2026. Una base sòlida per al següent repte.
         </p>
         <p data-ca="Em fascina la idea que les dades, ben treballades, no només descriuen el passat sinó que <span class='highlight'>obren preguntes</span> que ningú s'havia plantejat. Per això el meu camí no s'atura als visuals: vull entendre tot el cicle de vida de la dada, des de la ingesta fins a la decisió."
            data-es="Me fascina la idea de que los datos, bien trabajados, no solo describen el pasado sino que <span class='highlight'>abren preguntas</span> que nadie se había planteado. Por eso mi camino no se detiene en los visuales: quiero entender todo el ciclo de vida del dato, desde la ingesta hasta la decisión.">
@@ -866,15 +862,11 @@
       <div class="project-header">
         <h3 class="project-title" data-ca="E-Commerce <span class='italic'>Analytics</span><br>amb Microsoft Fabric" data-es="E-Commerce <span class='italic'>Analytics</span><br>con Microsoft Fabric">E-Commerce <span class="italic">Analytics</span><br>amb Microsoft Fabric</h3>
         <span class="project-status" data-ca="Completat" data-es="Completado">Completat</span>
-        <span class="project-status" data-ca="En construcció" data-es="En construcción">En construcció</span>
       </div>
       <p class="project-desc"
         data-ca="Anàlisi end-to-end de les vendes de roba d'Amazon a l'Índia (Q2 2022, 129K comandes) íntegrament a Microsoft Fabric: ingesta al Lakehouse, transformacions amb PySpark, modelat semàntic amb Direct Lake i report a Power BI Service. La troballa clau: Amazon i Merchant marquen l'èxit amb estats diferents ('Shipped' vs 'Delivered'); normalitzar-los va revelar que la fuita real d'ingrés era de l'~11% (₹8,82M), no del 36% que semblava en cru."
         data-es="Análisis end-to-end de las ventas de ropa de Amazon en India (Q2 2022, 129K pedidos) íntegramente en Microsoft Fabric: ingesta al Lakehouse, transformaciones con PySpark, modelado semántico con Direct Lake y report en Power BI Service. El hallazgo clave: Amazon y Merchant marcan el éxito con estados distintos ('Shipped' vs 'Delivered'); normalizarlos reveló que la fuga real de ingreso era del ~11% (₹8,82M), no del 36% que parecía en crudo.">
         Anàlisi end-to-end de les vendes de roba d'Amazon a l'Índia (Q2 2022, 129K comandes) íntegrament a Microsoft Fabric: ingesta al Lakehouse, transformacions amb PySpark, modelat semàntic amb Direct Lake i report a Power BI Service. La troballa clau: Amazon i Merchant marquen l'èxit amb estats diferents ('Shipped' vs 'Delivered'); normalitzar-los va revelar que la fuita real d'ingrés era de l'~11% (₹8,82M), no del 36% que semblava en cru.
-        data-ca="Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg."
-        data-es="Análisis end-to-end de un dataset real de ventas de una empresa de ropa en India. Desde la ingesta de CSVs al Lakehouse, pasando por transformaciones con PySpark, modelado semántico con Direct Lake, hasta la construcción de un report en Power BI orientado a responder preguntas de negocio: qué productos funcionan, qué canales tienen más cancelaciones, cuál es la salud real del catálogo.">
-        Anàlisi end-to-end d'un dataset real de vendes d'una empresa de roba a l'Índia. Des de la ingesta de CSVs al Lakehouse, passant per transformacions amb PySpark, modelat semàntic amb Direct Lake, fins a la construcció d'un report a Power BI orientat a respondre preguntes de negoci: quins productes funcionen, quins canals tenen més cancel·lacions, quina és la salut real del catàleg.
       </p>
       <div class="project-stack">
         <span class="stack-tag">Microsoft Fabric</span>
@@ -899,19 +891,18 @@
     </article>
 
     <article class="project-card" style="opacity: 0.7;">
-    <article class="project-card" style="opacity: 0.5;">
       <div class="project-header">
+        <h3 class="project-title" data-ca="Logística &amp; <span class='italic'>Supply Chain</span><br>amb Microsoft Fabric" data-es="Logística &amp; <span class='italic'>Supply Chain</span><br>con Microsoft Fabric">Logística &amp; <span class="italic">Supply Chain</span><br>amb Microsoft Fabric</h3>
         <h3 class="project-title" data-ca="Turisme: Barcelona <span class='italic'>vs.</span> Madrid<br>amb Microsoft Fabric" data-es="Turismo: Barcelona <span class='italic'>vs.</span> Madrid<br>con Microsoft Fabric">Turisme: Barcelona <span class="italic">vs.</span> Madrid<br>amb Microsoft Fabric</h3>
-        <h3 class="project-title" data-ca="Projecte <span class='italic'>2</span>" data-es="Proyecto <span class='italic'>2</span>">Projecte <span class="italic">2</span></h3>
         <span class="project-status" data-ca="Pròximament" data-es="Próximamente">Pròximament</span>
       </div>
       <p class="project-desc"
+        data-ca="Anàlisi de la cadena logística de l'e-commerce brasiler amb el dataset públic d'Olist (~100K comandes, 2016–2018). Mateix stack Fabric end-to-end, ara enfocat a temps de lliurament, desviació sobre la data estimada, cost de transport i rendiment per venedor i regió — què fa que una comanda arribi tard i com es relaciona amb la satisfacció del client."
+        data-es="Análisis de la cadena logística del e-commerce brasileño con el dataset público de Olist (~100K pedidos, 2016–2018). Mismo stack Fabric end-to-end, ahora enfocado a tiempos de entrega, desviación sobre la fecha estimada, coste de transporte y rendimiento por vendedor y región — qué hace que un pedido llegue tarde y cómo se relaciona con la satisfacción del cliente.">
+        Anàlisi de la cadena logística de l'e-commerce brasiler amb el dataset públic d'Olist (~100K comandes, 2016–2018). Mateix stack Fabric end-to-end, ara enfocat a temps de lliurament, desviació sobre la data estimada, cost de transport i rendiment per venedor i regió — què fa que una comanda arribi tard i com es relaciona amb la satisfacció del client.
         data-ca="Comparativa del turisme a Barcelona i Madrid amb dades obertes de l'INE (EOH, EGATUR, ETR) i registres de visitants de monuments. Mateix stack Fabric end-to-end, ara enfocat a ocupació hotelera, despesa per visitant, estacionalitat i mercats d'origen — quina ciutat converteix millor el turisme en valor?"
         data-es="Comparativa del turismo en Barcelona y Madrid con datos abiertos del INE (EOH, EGATUR, ETR) y registros de visitantes de monumentos. Mismo stack Fabric end-to-end, ahora enfocado a ocupación hotelera, gasto por visitante, estacionalidad y mercados de origen — ¿qué ciudad convierte mejor el turismo en valor?">
         Comparativa del turisme a Barcelona i Madrid amb dades obertes de l'INE (EOH, EGATUR, ETR) i registres de visitants de monuments. Mateix stack Fabric end-to-end, ara enfocat a ocupació hotelera, despesa per visitant, estacionalitat i mercats d'origen — quina ciutat converteix millor el turisme en valor?
-        data-ca="En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades."
-        data-es="En desarrollo. Posiblemente sobre el mundo del vino o la ornitología — un sector donde los datos son abundantes pero poco explotados.">
-        En desenvolupament. Possiblement sobre el món del vi o l'ornitologia — un sector on les dades són abundants però poc explotades.
       </p>
       <div class="project-stack">
         <span class="stack-tag">Microsoft Fabric</span>
@@ -939,10 +930,6 @@
 </main>
 
 <!-- CONTACT -->
-<div style="text-align: center; padding: 4rem 0 2rem;">
-  <img src="/logo.png" alt="Carles Sales" style="height: 140px; width: auto; opacity: 0.9;" />
-</div>
-
 <section class="contact" id="contact">
   <div class="contact-inner">
     <h2 class="contact-title" data-ca="Parlem de <span class='italic'>dades.</span>" data-es="Hablemos de <span class='italic'>datos.</span>">Parlem de <span class="italic">dades.</span></h2>
@@ -956,8 +943,8 @@
 </section>
 
 <footer>
-  <span data-ca="© 2026 Carles Sales · Fet a Vallclara · Dissenyada i dirigida per mi, construïda amb Claude (Anthropic)" data-es="© 2026 Carles Sales · Hecho en Vallclara · Diseñada y dirigida por mí, construida con Claude (Anthropic)">© 2026 Carles Sales · Fet a Vallclara · Dissenyada i dirigida per mi, construïda amb Claude (Anthropic)</span>
   <span data-ca="© 2026 Carles Sales · Fet a Vallclara · Construïda amb Claude (Anthropic)" data-es="© 2026 Carles Sales · Hecho en Vallclara · Construida con Claude (Anthropic)">© 2026 Carles Sales · Fet a Vallclara · Construïda amb Claude (Anthropic)</span>
+  <span data-ca="© 2026 Carles Sales · Fet a Vallclara · Dissenyada i dirigida per mi, construïda amb Claude (Anthropic)" data-es="© 2026 Carles Sales · Hecho en Vallclara · Diseñada y dirigida por mí, construida con Claude (Anthropic)">© 2026 Carles Sales · Fet a Vallclara · Dissenyada i dirigida per mi, construïda amb Claude (Anthropic)</span>
 </footer>
 
 <script>
